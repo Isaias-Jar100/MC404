@@ -91,17 +91,17 @@ char input_buffer[10];
 int main(){
   char calculator;
   read(STDIN_FD, (void*) input_buffer, 10);
-  if( input_buffer[2] == "+"){
+  if(input_buffer[2]== '+'){
     calculator = add(input_buffer[0],input_buffer[4]);
   }
-  else if(input_buffer[2]=="*"){
+  else if(input_buffer[2]=='*'){
     calculator = multiply(input_buffer[0],input_buffer[4]);
   }
-  else if (input_buffer[2]== "-"){
+  else if (input_buffer[2]== '-'){
     calculator = substract(input_buffer[0],input_buffer[4]);
   }
   char output[2]={calculator,'\n'};
-  write(STDOUT_FD,(void*) output, 2);
+  write(STDOUT_FD,(void*) output, 2);;
 
 return 0;
 }
