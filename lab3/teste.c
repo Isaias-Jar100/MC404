@@ -97,6 +97,7 @@ void int2hex(int num, char *str) {
     str[11] = '\0';
 }
 
+
 void int2oct(int num, char *str) {
     const char oct_chars[] = "01234567";
     
