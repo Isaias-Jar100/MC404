@@ -1,6 +1,6 @@
 .globl _start
 .bss
-input_address: .skip 6
+input_address: .skip 8
 result: .skip 3
 
 
@@ -19,8 +19,6 @@ main:
     mv a3, t4       # a3 = t4   a3 = cA1 
     jal leitura2    # t5 vlor
     mv a4, t5       # a4 = t5   a4 = cO1
-    jal read        
-    mv a2, a1        # Salvando o conteudo de a1 em a2
     jal leitura3     # t4 valor
     mv a5, t4        # a5 = t4   a5 = cO2
     jal similaridade # a6 = cA2
@@ -38,6 +36,7 @@ main:
     li t1, 10
     sb t1, 2(t0)  # '\n'
     jal write
+  
     j exit
 um_digito:
     addi a6, a6, 48
@@ -53,7 +52,7 @@ um_digito:
 read:
     li a0, 0             # file descriptor = 0 (stdin)
     la a1, input_address # buffer
-    li a2, 6             # size - Reads 6 bytes.
+    li a2, 8             # size - Reads 6 bytes.
     li a7, 63            # syscall read (63)
     ecall
     ret
@@ -99,11 +98,11 @@ while2:
     j while2
 
 fim2:
+    addi a2, a2, 1  
     ret
 
 leitura3:
-    li t0, 10       # ASCII do '\n'
-    li t1, 0        # índice no buffer
+    li t0, 10       # ASCII do '\n'     
     li t3, 10       # constante 10
     li t4, 0        # acumulador para o primeiro número
 
