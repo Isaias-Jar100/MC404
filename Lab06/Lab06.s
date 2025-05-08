@@ -50,33 +50,33 @@ um_digito:
     j exit
 
 read:
-    li a0, 0             # file descriptor = 0 (stdin)
-    la a1, input_address # buffer
-    li a2, 8             # size - Reads 6 bytes.
-    li a7, 63            # syscall read (63)
+    li a0, 0                # file descriptor = 0 (stdin)
+    la a1, input_address    # buffer
+    li a2, 8                # size - Reads 6 bytes.
+    li a7, 63               # syscall read (63)
     ecall
     ret
 
 write:
-    li a0, 1            # file descriptor = 1 (stdout)
-    la a1, result       # buffer
-    li a2, 3            # size - Writes 4 bytes.
-    li a7, 64           # syscall write (64)
+    li a0, 1                # file descriptor = 1 (stdout)
+    la a1, result           # buffer
+    li a2, 3                # size - Writes 4 bytes.
+    li a7, 64               # syscall write (64)
     ecall
     ret
 leitura1:
-    li t0, 32       # ASCII do espaço
-    li t1, 0        # índice no buffer
-    li t3, 10       # constante 10
-    li t4, 0        # acumulador para o primeiro número
+    li t0, 32               # ASCII do espaço
+    li t1, 0                # índice no buffer
+    li t3, 10               # constante 10
+    li t4, 0                # acumulador para o primeiro número
 
 while1:
-    lb t2, 0(a2)        # lê caractere do buffer
-    beq t2, t0, fim1    # if branch equal a (espaço) o loop continua
-    addi t2, t2, -48    # subtraçao carteada resgitrador + numero
-    mul t4, t4, t3      # multiplica acumulador por 10
-    add t4, t4, t2      # soma dígito
-    addi a2, a2, 1      # avança para próximo caractere i++
+    lb t2, 0(a2)            # lê caractere do buffer
+    beq t2, t0, fim1        # if branch equal a (espaço) o loop continua
+    addi t2, t2, -48        # subtraçao carteada resgitrador + numero
+    mul t4, t4, t3          # multiplica acumulador por 10
+    add t4, t4, t2          # soma dígito
+    addi a2, a2, 1          # avança para próximo caractere i++
     j while1
 
 fim1:
