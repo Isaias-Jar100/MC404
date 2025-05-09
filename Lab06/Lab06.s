@@ -22,6 +22,8 @@ main:
     jal leitura3     # t4 valor
     mv a5, t4        # a5 = t4   a5 = cO2
     jal similaridade # a6 = cA2
+   
+   
     #write------------------------
     li t1, 10 # t0 = 10
     blt a6, t1, um_digito

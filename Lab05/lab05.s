@@ -53,6 +53,7 @@ main:
     sub t1, t1, t2# cateto 2
     
     jal hipotenusa
+   
     #------------------------
     li t3, 100
     div t4, t2, t3     # t4 = centena
