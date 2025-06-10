@@ -49,8 +49,7 @@ um_digito:
     sb t1, 1(t0)  # '\n'
     
     jal write
-    j exit
-
+fimgets:
 read:
     li a0, 0                # file descriptor = 0 (stdin)
     la a1, input_address    # buffer
